@@ -8,6 +8,7 @@ def getFirstPageUrls():
     firstpage = "http://cd.meituan.com/"
     html_file = openUrl(firstpage)
     soup = BeautifulSoup(html_file)
+    print soup
     deal_tiles = list(soup.find_all("h3","deal-tile__title"))
     hrefs = []
     for i in range(len(deal_tiles)):
@@ -94,7 +95,7 @@ def jsParser(url):
     service_comments = contents
 
     #将获取到的评论信息写入文件
-    rate_info = "service_comments:" + service_comments
+    rate_info = "raw_comments:" + service_comments
     return rate_info
     
 #从url地址中解析出商品编号
@@ -105,6 +106,10 @@ def getServiceNo(url):
     return number
 
 if __name__ == "__main__":
+
+##    url = "http://cd.meituan.com/deal/32119581.html"
+##    rate_info = jsParser(url)
+##    print rate_info
 
     print "executing......"
     links = getFirstPageUrls()
@@ -124,8 +129,6 @@ if __name__ == "__main__":
             file_open.close()
         except:
             print "failure to save some information"
-
-    
 
     
     
