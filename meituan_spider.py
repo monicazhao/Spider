@@ -95,7 +95,7 @@ def jsParser(url):
     service_comments = contents
 
     #将获取到的评论信息写入文件
-    rate_info = "raw_comments:" + service_comments
+    rate_info = "service_comments:" + service_comments
     return rate_info
     
 #从url地址中解析出商品编号
@@ -123,7 +123,7 @@ if __name__ == "__main__":
             basic_info = htmlParser(url)
             rate_info = jsParser(url)
             file_number = getServiceNo(url)
-            file_name = 'E:/result/' + file_number + '.txt'
+            file_name = 'E:/Today/' + file_number + '.txt'
             file_open = open(file_name,"w")
             file_open.writelines(basic_info + rate_info)
             file_open.close()
